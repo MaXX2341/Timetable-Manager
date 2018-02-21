@@ -6,11 +6,4 @@
     android:layout_height="match_parent"
     tools:context="com.timetable.kevin.timetable_manager.MainActivity">
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="44dp" />
 </android.support.constraint.ConstraintLayout>
