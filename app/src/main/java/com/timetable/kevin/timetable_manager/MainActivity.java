@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity {
         /*
 
         {
-        hallo
+        hallo Jonas
+        Max
         }
 
 
