@@ -11,11 +11,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.button2).setOnClickListener(new handleButton());
+        findViewById(R.id.anmeldeBT).setOnClickListener(new handleButton());
     }
+
     class handleButton implements View.OnClickListener {
         public void onClick(View v) {
-            Intent intent = new Intent(MainActivity.this, HamburgerTest.class);
+            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
             startActivity(intent);
         }
 

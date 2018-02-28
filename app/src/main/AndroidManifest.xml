@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HamburgerTest"
-            android:label="@string/title_activity_hamburger_test"
+            android:name=".DashboardActivity"
+            android:label="@string/title_activity_dashboard"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
