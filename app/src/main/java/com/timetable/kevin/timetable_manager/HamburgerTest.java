@@ -51,9 +51,7 @@ public class HamburgerTest extends AppCompatActivity
         } else {
             super.onBackPressed();
 
-
         }
-
     }
 
     @Override
