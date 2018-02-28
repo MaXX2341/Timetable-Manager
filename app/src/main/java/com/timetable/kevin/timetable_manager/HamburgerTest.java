@@ -50,7 +50,6 @@ public class HamburgerTest extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-
         }
     }
 
