@@ -12,12 +12,14 @@
         android:id="@+id/imageViewStundenplan"
         android:layout_width="fill_parent"
         android:layout_height="213dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/stundenplan"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="115dp"
-        android:layout_marginTop="20dp"
-
-        />
+        tools:layout_editor_absoluteY="115dp" />
 
     <Button
         android:id="@+id/AendernButton"
@@ -44,4 +46,33 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="19dp"
         android:text="N.I." />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="213dp"
+        android:layout_alignBottom="@id/imageViewStundenplan"
+
+        >
+        <android.support.constraint.ConstraintLayout>
+
+            <TableRow
+
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:text="N.I."
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="46dp">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    tools:text="12:30" />
+            </TableRow>
+        </android.support.constraint.ConstraintLayout>
+
+    </TableLayout>
+
+
 </RelativeLayout>
