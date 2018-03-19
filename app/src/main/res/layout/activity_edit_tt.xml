@@ -4,48 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.timetable.kevin.timetable_manager.DashboardActivity"
-    tools:showIn="@layout/app_bar_dashboard">
-
-    <!--<ImageView
-        android:id="@+id/imageViewStundenplan"
-        android:layout_width="fill_parent"
-        android:layout_height="213dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/stundenplan"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="115dp" /> -->
-
-    <Button
-        android:id="@+id/AendernButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/Tablelayout"
-        android:layout_marginEnd="61dp"
-        android:layout_marginRight="61dp"
-        android:layout_marginTop="19dp"
-        android:text="Ändern"
-
-        />
-    <Button
-        android:id="@+id/EmptyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/AendernButton"
-        android:layout_alignBottom="@+id/AendernButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="38dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="19dp"
-        android:text="N.I." />
+    tools:context="com.timetable.kevin.timetable_manager.EditTTActivity">
 
     <TableLayout
         android:id="@+id/Tablelayout"
@@ -130,58 +89,65 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/r1TextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:text="1."
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r1TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:text="8:00 - 9:00"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r1TextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:text="Geschichte"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r1TextView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:text="Geographie"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r1TextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:text="Mathematik"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r1TextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:text="Internet"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r1TextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:text="Sport"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
@@ -192,58 +158,65 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/r2TextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r2TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r2TextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r2TextView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r2TextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r2TextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r2TextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
@@ -254,58 +227,65 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/r3TextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r3TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r3TextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r3TextView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r3TextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r3TextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r3TextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
@@ -316,57 +296,64 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/r4TextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/r4TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r4TextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r4TextView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r4TextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r4TextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r4TextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
@@ -377,58 +364,65 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/r5TextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r5TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r5TextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r5TextView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r5TextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r5TextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r5TextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
@@ -439,58 +433,65 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/r6TextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r6TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r6TextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r6TextView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r6TextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r6TextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r6TextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
@@ -501,15 +502,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/r7TextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r7TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -517,42 +519,47 @@
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r7TextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r7TextView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r7TextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r7TextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r7TextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
@@ -563,56 +570,63 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/r8TextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r8TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r8TextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r8TextView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
 
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r8TextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r8TextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r8TextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
@@ -622,60 +636,65 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+
+            <EditText
                 android:id="@+id/r9TextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r9TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r9TextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r9TextView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r9TextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r9TextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/r9TextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
         </TableRow>
 
     </TableLayout>
-
 
 </RelativeLayout>
