@@ -697,4 +697,18 @@
 
     </TableLayout>
 
+    <Button
+        android:id="@+id/bestaetigenBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/Tablelayout"
+        android:layout_marginEnd="61dp"
+        android:layout_marginRight="61dp"
+        android:layout_marginTop="19dp"
+        android:text="Bestätigen"
+
+        />
+
 </RelativeLayout>
