@@ -82,19 +82,15 @@ public class DashboardActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        Intent intent = null;
+        if (id == R.id.nav_dashboard) {
+            if (DashboardActivity.this != this) {
+                intent = new Intent(DashboardActivity.this, DashboardActivity.class);   //no relativ sinnfrei, da man fost lai afn dashboard es menü aufriafen konn^^
+                startActivity(intent);
+            }
+        } else if (id == R.id.nav_logoout) {
+            intent = new Intent(DashboardActivity.this, MainActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
