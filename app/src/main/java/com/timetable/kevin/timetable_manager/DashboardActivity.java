@@ -2,9 +2,6 @@ package com.timetable.kevin.timetable_manager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import com.loopj.android.http.*;
+
+import cz.msebera.android.httpclient.Header;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +45,7 @@ public class DashboardActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         findViewById(R.id.AendernButton).setOnClickListener(new handleButton());
-
+        connectWS();
     }
 
     @Override
@@ -98,6 +101,39 @@ public class DashboardActivity extends AppCompatActivity
         return true;
     }
 
+    public void connectWS(){
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get("https://www.google.com", new AsyncHttpResponseHandler() {
+
+            @Override
+            public void onStart() {
+                // called before request is started
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
+                t1.setText("Success");
+            }
+
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+                // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                TextView t1 = (TextView)findViewById(R.id.r2TextView1);
+
+                t1.setText("Failure");
+            }
+
+            @Override
+            public void onRetry(int retryNo) {
+                // called when request is retried
+            }
+        });
+
+
+    }
+
     class handleButton implements View.OnClickListener {
         public void onClick(View v) {
             Intent intent = new Intent(DashboardActivity.this, EditTTActivity.class);
@@ -105,4 +141,6 @@ public class DashboardActivity extends AppCompatActivity
         }
 
     }
+
+
 }
