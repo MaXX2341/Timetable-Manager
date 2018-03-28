@@ -12,8 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.*;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -45,6 +49,7 @@ public class DashboardActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         findViewById(R.id.AendernButton).setOnClickListener(new handleButton());
+        findViewById(R.id.reloadButton).setOnClickListener(new handleButton());
         connectWS();
     }
 
@@ -102,18 +107,22 @@ public class DashboardActivity extends AppCompatActivity
     }
 
     public void connectWS(){
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get("https://www.google.com", new AsyncHttpResponseHandler() {
+        final AsyncHttpClient client = new AsyncHttpClient();
+      /*  client.get("http://kevinsorg.bplaced.net", new AsyncHttpResponseHandler()) {
 
             @Override
             public void onStart() {
-                // called before request is started
+                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
+                t1.setText("trying...");
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+            public void onSuccess(int statusCode, Header[] headers, JSONArray array) {
                 TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
                 t1.setText("Success");
+
+                JSONObject daten = new JSONObject();
+
             }
 
 
@@ -123,21 +132,55 @@ public class DashboardActivity extends AppCompatActivity
                 TextView t1 = (TextView)findViewById(R.id.r2TextView1);
 
                 t1.setText("Failure");
+
             }
 
             @Override
             public void onRetry(int retryNo) {
-                // called when request is retried
+                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
+                t1.setText("retrying...");
             }
         });
+*/
+    //  DO FAHLTS MITN JSON DESSWEGEN FAILURE
+        client.get("http://kevinsorg.bplaced.net", new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
 
+                if (response != null) {
+                    TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
+                    t1.setText("Success");
 
+                    //JSONObject daten = Max traurig :,( --> Kevin moch du des!
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
+                t1.setText("Failure");
+
+            }
+            @Override
+            public void onRetry(int retryNo) {
+                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
+                t1.setText("retrying...");
+            }
+
+        });
     }
 
     class handleButton implements View.OnClickListener {
         public void onClick(View v) {
-            Intent intent = new Intent(DashboardActivity.this, EditTTActivity.class);
-            startActivity(intent);
+            int id = v.getId();
+            if (id == R.id.AendernButton) {
+                Intent intent = new Intent(DashboardActivity.this, EditTTActivity.class);
+                startActivity(intent);
+            }
+            else if (id == R.id.reloadButton){
+                connectWS();
+            }
         }
 
     }

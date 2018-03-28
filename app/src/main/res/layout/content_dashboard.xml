@@ -34,8 +34,9 @@
         android:text="Ändern"
 
         />
+
     <Button
-        android:id="@+id/EmptyButton"
+        android:id="@+id/reloadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/AendernButton"
@@ -45,7 +46,7 @@
         android:layout_marginLeft="38dp"
         android:layout_marginStart="38dp"
         android:layout_marginTop="19dp"
-        android:text="N.I." />
+        android:text="Aktualisieren" />
 
     <TableLayout
         android:id="@+id/Tablelayout"
