@@ -205,7 +205,6 @@
                 android:id="@+id/r2TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="wegen kein JSON bekommen"
                 android:textColor="@color/colorBlack"
                 android:background="@drawable/textview_border"/>
 
