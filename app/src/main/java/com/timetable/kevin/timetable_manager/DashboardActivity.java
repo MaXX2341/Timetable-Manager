@@ -25,7 +25,7 @@ import cz.msebera.android.httpclient.Header;
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ResponseHandler rh = new ResponseHandler("DBA",this);
+    private ResponseHandler rh = new ResponseHandler("DBA", this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,6 @@ public class DashboardActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         findViewById(R.id.AendernButton).setOnClickListener(new handleButton());
         findViewById(R.id.reloadButton).setOnClickListener(new handleButton());
-
 
         rh.connectWS();
     }
@@ -162,7 +161,11 @@ public class DashboardActivity extends AppCompatActivity
 
 
     public void setTestOutput (String status){
-        TextView t1 = (TextView)findViewById(R.id.r2TextView1);
-        t1.setText(status);
+        Toast.makeText(this, status,
+                Toast.LENGTH_SHORT).show();
+    }
+    public void printTestDaten (String daten){
+        TextView t1 = (TextView)findViewById(R.id.r2TextView2);
+        t1.setText(daten);
     }
 }
