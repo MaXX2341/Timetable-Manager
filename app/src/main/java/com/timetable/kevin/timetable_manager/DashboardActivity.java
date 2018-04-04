@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.loopj.android.http.*;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
@@ -24,6 +25,7 @@ import cz.msebera.android.httpclient.Header;
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private ResponseHandler rh = new ResponseHandler("DBA",this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,9 @@ public class DashboardActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         findViewById(R.id.AendernButton).setOnClickListener(new handleButton());
         findViewById(R.id.reloadButton).setOnClickListener(new handleButton());
-        connectWS();
+
+
+        rh.connectWS();
     }
 
     @Override
@@ -105,53 +109,24 @@ public class DashboardActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
+/*
     public void connectWS(){
         final AsyncHttpClient client = new AsyncHttpClient();
-      /*  client.get("http://kevinsorg.bplaced.net", new AsyncHttpResponseHandler()) {
 
-            @Override
-            public void onStart() {
-                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
-                t1.setText("trying...");
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray array) {
-                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
-                t1.setText("Success");
-
-                JSONObject daten = new JSONObject();
-
-            }
-
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
-                // called when response HTTP status is "4XX" (eg. 401, 403, 404)
-                TextView t1 = (TextView)findViewById(R.id.r2TextView1);
-
-                t1.setText("Failure");
-
-            }
-
-            @Override
-            public void onRetry(int retryNo) {
-                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
-                t1.setText("retrying...");
-            }
-        });
-*/
-    //  DO FAHLTS MITN JSON DESSWEGEN FAILURE
-        client.get("http://kevinsorg.bplaced.net", new JsonHttpResponseHandler() {
+        client.get("http://kevinsorg.bplaced.net/MySQLadmin", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
 
+                JSONArray daten;
                 if (response != null) {
                     TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
                     t1.setText("Success");
 
-                    //JSONObject daten = Max traurig :,( --> Kevin moch du des!
+                    try {
+                        daten = response.getJSONArray(0);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
@@ -170,7 +145,7 @@ public class DashboardActivity extends AppCompatActivity
 
         });
     }
-
+*/
     class handleButton implements View.OnClickListener {
         public void onClick(View v) {
             int id = v.getId();
@@ -179,11 +154,15 @@ public class DashboardActivity extends AppCompatActivity
                 startActivity(intent);
             }
             else if (id == R.id.reloadButton){
-                connectWS();
+                rh.connectWS();
             }
         }
 
     }
 
 
+    public void setTestOutput (String status){
+        TextView t1 = (TextView)findViewById(R.id.r2TextView1);
+        t1.setText(status);
+    }
 }
