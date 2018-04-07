@@ -9,6 +9,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -33,20 +34,24 @@ public class ResponseHandler {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-
+                String testVar = "3";
                 dbA.setTestOutput("Success");
-                JSONArray daten;
-                if (response != null) {
 
+                if (response != null) {
+                    testVar = "We received some JSON, over!";
                     try {
-                        daten = response.getJSONArray(0);
-                        dbA.printTestDaten(daten.getString(0));
+                          JSONObject jO = response.getJSONObject(0);
+                        dbA.printTestDaten(jO.getString("name"));   //--> i bin pro, iatz werd rassiert!
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-
+                else {
+                    testVar=("nothing in the JSON");
+                }
+                dbA.makeVarDump(testVar);
             }
 
             @Override

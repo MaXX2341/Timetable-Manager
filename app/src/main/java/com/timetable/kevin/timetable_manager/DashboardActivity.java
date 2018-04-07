@@ -22,9 +22,9 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    TextView t1 = null;
     private ResponseHandler rh = new ResponseHandler("DBA", this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class DashboardActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         findViewById(R.id.AendernButton).setOnClickListener(new handleButton());
         findViewById(R.id.reloadButton).setOnClickListener(new handleButton());
-
+        t1 = (TextView)findViewById(R.id.r2TextView4);
         rh.connectWS();
     }
 
@@ -165,7 +165,12 @@ public class DashboardActivity extends AppCompatActivity
                 Toast.LENGTH_SHORT).show();
     }
     public void printTestDaten (String daten){
-        TextView t1 = (TextView)findViewById(R.id.r2TextView2);
+
         t1.setText(daten);
+    }
+    public void makeVarDump(String var){
+        Toast.makeText(this, var,
+                Toast.LENGTH_SHORT).show();
+
     }
 }
