@@ -6,4 +6,7 @@ package com.timetable.kevin.timetable_manager;
 
 public class Stundenplan {
 
+    public Stundenplan(){
+
+    }
 }
