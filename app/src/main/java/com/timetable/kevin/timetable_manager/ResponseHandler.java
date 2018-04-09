@@ -30,7 +30,7 @@ public class ResponseHandler {
     public void connectWS(){
         final AsyncHttpClient client = new AsyncHttpClient();
 //http://kevinsorg.bplaced.net/MySQLadmin
-        client.get("http://kevinsorg.bplaced.net/MySQLadmin/index.php?tb=stunde", new JsonHttpResponseHandler() {
+        client.get("http://kevinsorg.bplaced.net/MySQLadmin/index.php?tb=stunde", new JsonHttpResponseHandler() { //TODO url muss customisable sein, um immer das richtige abrufen zu können
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -39,14 +39,8 @@ public class ResponseHandler {
 
                 if (response != null) {
                     testVar = "We received some JSON, over!";
-                    try {
-                          JSONObject jO = response.getJSONObject(0);
-                        dbA.printTestDaten(jO.getString("name"));   //--> i bin pro, iatz werd rassiert!
 
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    getValueArrFromWebservice(response,2); //if --> login muss auch hierher         //Daten werden vom Webserver geholt
                 }
                 else {
                     testVar=("nothing in the JSON");
@@ -68,6 +62,29 @@ public class ResponseHandler {
             }
 
         });
+
         //client.dispose() ??
     }
+    public void getValueArrFromWebservice(JSONArray response,int SpaltenNR)  {
+        JSONObject jO = null;
+        String[]  valueArr = null;
+        try {
+            jO = response.getJSONObject(0);         //TODO customisable index benötigt
+            for (int i = 0; i < 9; i++) {
+
+                valueArr[i] = jO.getString("name");         //values werden geholt über "response" und werden dem valueArr hinzugefügt(Zellen --> untereinander)
+
+            }
+
+            dbA.getStundenplan().fillArraysWithValue(valueArr,SpaltenNR); // --> Stundenplan der in der dbA erstellt wird, wird hergeholt und darüber wird der Stundenplan befüllt
+
+
+          //  dbA.printTestDaten(jO.getString("name"));   //--> i bin pro, iatz werd rassiert!
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

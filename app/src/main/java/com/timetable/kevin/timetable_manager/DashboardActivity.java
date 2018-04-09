@@ -25,12 +25,17 @@ import cz.msebera.android.httpclient.Header;
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView t1 = null;
+    Stundenplan st = new Stundenplan();
+
+
     private ResponseHandler rh = new ResponseHandler("DBA", this);
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //Hamburger + settings
+        Toolbar toolbar = findViewById(R.id.toolbar); //Hamburger + settings
         setSupportActionBar(toolbar);
 
      /*   FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab); -->  Button Rechts unten
@@ -53,7 +58,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         findViewById(R.id.AendernButton).setOnClickListener(new handleButton());
         findViewById(R.id.reloadButton).setOnClickListener(new handleButton());
         t1 = (TextView)findViewById(R.id.r2TextView4);
-        rh.connectWS();
+
+       // rh.connectWS(); TODO einschalten
     }
 
     @Override
@@ -172,5 +178,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         Toast.makeText(this, var,
                 Toast.LENGTH_SHORT).show();
 
+    }
+    public Stundenplan getStundenplan(){
+        return st;
     }
 }
