@@ -67,7 +67,7 @@ public class ResponseHandler {
     }
     public void getValueArrFromWebservice(JSONArray response,int SpaltenNR)  {
         JSONObject jO = null;
-        String[]  valueArr = null;
+        String[]  valueArr = new String[9];
         try {
             jO = response.getJSONObject(0);         //TODO customisable index benötigt
             for (int i = 0; i < 9; i++) {

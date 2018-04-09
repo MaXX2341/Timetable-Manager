@@ -59,7 +59,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         findViewById(R.id.reloadButton).setOnClickListener(new handleButton());
         t1 = (TextView)findViewById(R.id.r2TextView4);
 
-       // rh.connectWS(); TODO einschalten
+        rh.connectWS(); //TODO einschalten
     }
 
     @Override
