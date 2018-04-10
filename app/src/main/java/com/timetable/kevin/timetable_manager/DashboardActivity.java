@@ -114,43 +114,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-/*
-    public void connectWS(){
-        final AsyncHttpClient client = new AsyncHttpClient();
 
-        client.get("http://kevinsorg.bplaced.net/MySQLadmin", new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-
-                JSONArray daten;
-                if (response != null) {
-                    TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
-                    t1.setText("Success");
-
-                    try {
-                        daten = response.getJSONArray(0);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
-                t1.setText("Failure");
-
-            }
-            @Override
-            public void onRetry(int retryNo) {
-                TextView t1 = (TextView)findViewById(R.id.r2TextView1);  // --> IT WORKS
-                t1.setText("retrying...");
-            }
-
-        });
-    }
-*/
     class handleButton implements View.OnClickListener {
         public void onClick(View v) {
             int id = v.getId();

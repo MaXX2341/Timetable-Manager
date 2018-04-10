@@ -19,7 +19,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class ResponseHandler {
     DashboardActivity dbA = null;
-
+    private int j;
     public ResponseHandler(String fromWhere, Activity c){
         if (fromWhere == "DBA"){
             //c.cast(dbA); //--> FIX PROBLEM DAMIT DES ALS DASHBOARDACTIVITY UNGSECHEN WERT
@@ -30,7 +30,37 @@ public class ResponseHandler {
     public void connectWS(){
         final AsyncHttpClient client = new AsyncHttpClient();
 //http://kevinsorg.bplaced.net/MySQLadmin
-        client.get("http://kevinsorg.bplaced.net/MySQLadmin/index.php?tb=stunde", new JsonHttpResponseHandler() { //TODO url muss customisable sein, um immer das richtige abrufen zu können
+        String tabelle = "ollm no gleich";
+
+        for (j = 0; j < 9; j++) {
+
+
+            switch (j) {
+                case 0:
+                    tabelle = "stunde";
+                    break;
+                case 1:
+                    tabelle = "zeit";
+                    break;
+                case 2:
+                    tabelle = "montag";
+                    break;
+                case 3:
+                    tabelle = "dienstag";
+                    break;
+                case 4:
+                    tabelle = "mittwoch";
+                    break;
+                case 5:
+                    tabelle = "donnerstag";
+                    break;
+                case 6:
+                    tabelle = "freitag";
+                    break;
+            }
+            //dbA.makeVarDump(tabelle);
+
+        client.get("http://kevinsorg.bplaced.net/MySQLadmin/index.php?tb="+tabelle+"", new JsonHttpResponseHandler() { //TODO url muss customisable sein, um immer das richtige abrufen zu können
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -40,7 +70,7 @@ public class ResponseHandler {
                 if (response != null) {
                     testVar = "We received some JSON, over!";
 
-                    getValueArrFromWebservice(response,2); //if --> login muss auch hierher         //Daten werden vom Webserver geholt
+                    getValueArrFromWebservice(response,j); //if --> login muss auch hierher         //Daten werden vom Webserver geholt
                 }
                 else {
                     testVar=("nothing in the JSON");
@@ -62,6 +92,7 @@ public class ResponseHandler {
             }
 
         });
+    }
 
         //client.dispose() ??
     }
@@ -69,9 +100,9 @@ public class ResponseHandler {
         JSONObject jO = null;
         String[]  valueArr = new String[9];
         try {
-            jO = response.getJSONObject(0);         //TODO customisable index benötigt
-            for (int i = 0; i < 9; i++) {
 
+            for (int i = 0; i < 9; i++) {
+                jO = response.getJSONObject(i);
                 valueArr[i] = jO.getString("name");         //values werden geholt über "response" und werden dem valueArr hinzugefügt(Zellen --> untereinander)
 
             }
