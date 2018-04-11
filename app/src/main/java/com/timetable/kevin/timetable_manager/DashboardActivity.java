@@ -58,8 +58,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         findViewById(R.id.AendernButton).setOnClickListener(new handleButton());
         findViewById(R.id.reloadButton).setOnClickListener(new handleButton());
         t1 = (TextView)findViewById(R.id.r2TextView4);
-
-        rh.connectWS(); //TODO einschalten
+        for (int i = 0; i < 7; i++) {
+            rh.connectWS(i);
+        }
     }
 
     @Override
@@ -123,7 +124,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 startActivity(intent);
             }
             else if (id == R.id.reloadButton){
-                rh.connectWS();
+                for (int i = 0; i < 7; i++) {
+                    rh.connectWS(i);
+                }
             }
         }
 
@@ -138,11 +141,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         t1.setText(daten);
     }
-    public void makeVarDump(String var){
-        Toast.makeText(this, var,
-                Toast.LENGTH_SHORT).show();
 
-    }
     public Stundenplan getStundenplan(){
         return st;
     }

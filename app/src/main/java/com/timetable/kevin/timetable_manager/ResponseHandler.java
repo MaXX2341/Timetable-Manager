@@ -19,7 +19,6 @@ import cz.msebera.android.httpclient.Header;
 
 public class ResponseHandler {
     DashboardActivity dbA = null;
-    private int j;
     public ResponseHandler(String fromWhere, Activity c){
         if (fromWhere == "DBA"){
             //c.cast(dbA); //--> FIX PROBLEM DAMIT DES ALS DASHBOARDACTIVITY UNGSECHEN WERT
@@ -27,15 +26,12 @@ public class ResponseHandler {
         }
     }
 
-    public void connectWS(){
+    public void connectWS(final int chooser){
         final AsyncHttpClient client = new AsyncHttpClient();
 //http://kevinsorg.bplaced.net/MySQLadmin
         String tabelle = "ollm no gleich";
 
-        for (j = 0; j < 9; j++) {
-
-
-            switch (j) {
+            switch (chooser) {
                 case 0:
                     tabelle = "stunde";
                     break;
@@ -57,6 +53,7 @@ public class ResponseHandler {
                 case 6:
                     tabelle = "freitag";
                     break;
+                default: dbA.setTestOutput("kaputt do mit chooser");
             }
             //dbA.makeVarDump(tabelle);
 
@@ -70,18 +67,19 @@ public class ResponseHandler {
                 if (response != null) {
                     testVar = "We received some JSON, over!";
 
-                    getValueArrFromWebservice(response,j); //if --> login muss auch hierher         //Daten werden vom Webserver geholt
+                    getValueArrFromWebservice(response,chooser); //if --> login muss auch hierher         //Daten werden vom Webserver geholt //todo wegen chooser vielleicht problem
                 }
                 else {
                     testVar=("nothing in the JSON");
                 }
-                dbA.makeVarDump(testVar);
+                dbA.setTestOutput(testVar);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 //super.onFailure(statusCode, headers, responseString, throwable);
-                dbA.setTestOutput("Failure");
+               // dbA.setTestOutput("Failure");
+                dbA.printTestDaten(chooser+". fail");
 
 
             }
@@ -92,7 +90,7 @@ public class ResponseHandler {
             }
 
         });
-    }
+
 
         //client.dispose() ??
     }
