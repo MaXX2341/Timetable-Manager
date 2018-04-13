@@ -68,10 +68,13 @@ public class ResponseHandler {
                     testVar = "We received some JSON, over!";
 
                     getValueArrFromWebservice(response,chooser); //if --> login muss auch hierher         //Daten werden vom Webserver geholt //todo wegen chooser vielleicht problem
+                    //dbA.printTestDaten(chooser+ ". success");
+
                 }
                 else {
                     testVar=("nothing in the JSON");
                 }
+
                 dbA.setTestOutput(testVar);
             }
 
@@ -79,7 +82,8 @@ public class ResponseHandler {
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 //super.onFailure(statusCode, headers, responseString, throwable);
                // dbA.setTestOutput("Failure");
-                dbA.printTestDaten(chooser+". fail");
+
+            //    dbA.printTestDaten(chooser+". fail");
 
 
             }
