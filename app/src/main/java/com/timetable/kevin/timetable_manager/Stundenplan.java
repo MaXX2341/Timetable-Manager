@@ -18,6 +18,7 @@ public class Stundenplan {
     private String[] freitagArr = new String[9];
 
     private ArrayList<String[]> sammelArr= new ArrayList<String[]>();
+    private boolean nurEinMal = false;
 
     public Stundenplan(){
         sammelArr.add(stundenArr);

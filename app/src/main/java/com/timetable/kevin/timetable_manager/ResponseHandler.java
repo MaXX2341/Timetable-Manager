@@ -65,10 +65,10 @@ public class ResponseHandler {
                 dbA.setTestOutput("Success");
 
                 if (response != null) {
-                    testVar = "We received some JSON, over!";
+                    testVar = "JSON received";
 
                     getValueArrFromWebservice(response,chooser); //if --> login muss auch hierher         //Daten werden vom Webserver geholt //todo wegen chooser vielleicht problem
-                    //dbA.printTestDaten(chooser+ ". success");
+
 
                 }
                 else {
@@ -105,7 +105,13 @@ public class ResponseHandler {
 
             for (int i = 0; i < 9; i++) {
                 jO = response.getJSONObject(i);
-                valueArr[i] = jO.getString("name");         //values werden geholt über "response" und werden dem valueArr hinzugefügt(Zellen --> untereinander)
+                if(jO.has("name")) {
+                    valueArr[i] = jO.getString("name");
+                }
+                else{
+                    valueArr[i] = "";
+                }
+                        //values werden geholt über "response" und werden dem valueArr hinzugefügt(Zellen --> untereinander)
 
             }
 
@@ -116,6 +122,8 @@ public class ResponseHandler {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            dbA.setTestOutput("i bims do");
+
         }
 
     }

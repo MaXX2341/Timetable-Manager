@@ -20,12 +20,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import cz.msebera.android.httpclient.Header;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView t1 = null;
+
     Stundenplan st = new Stundenplan();
+    TextView[][] valuesFuerST = new TextView[9][7];
+
 
 
     private ResponseHandler rh = new ResponseHandler("DBA", this);
@@ -57,10 +61,91 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         navigationView.setNavigationItemSelectedListener(this);
         findViewById(R.id.AendernButton).setOnClickListener(new handleButton());
         findViewById(R.id.reloadButton).setOnClickListener(new handleButton());
-        t1 = (TextView)findViewById(R.id.r2TextView4);
-        for (int i = 0; i < 7; i++) {
-            rh.connectWS(i);
-        }
+
+        valuesFuerST[0][0]=findViewById(R.id.r0TextView1);
+        valuesFuerST[0][1]=findViewById(R.id.r0TextView2);
+        valuesFuerST[0][2]=findViewById(R.id.r0TextView3);
+        valuesFuerST[0][3]=findViewById(R.id.r0TextView4);
+        valuesFuerST[0][4]=findViewById(R.id.r0TextView5);
+        valuesFuerST[0][5]=findViewById(R.id.r0TextView6);
+        valuesFuerST[0][6]=findViewById(R.id.r0TextView7);
+
+        valuesFuerST[1][0]=findViewById(R.id.r1TextView1);
+        valuesFuerST[1][1]=findViewById(R.id.r1TextView2);
+        valuesFuerST[1][2]=findViewById(R.id.r1TextView3);
+        valuesFuerST[1][3]=findViewById(R.id.r1TextView4);
+        valuesFuerST[1][4]=findViewById(R.id.r1TextView5);
+        valuesFuerST[1][5]=findViewById(R.id.r1TextView6);
+        valuesFuerST[1][6]=findViewById(R.id.r1TextView7);
+
+
+        valuesFuerST[2][0]=findViewById(R.id.r2TextView1);
+        valuesFuerST[2][1]=findViewById(R.id.r2TextView2);
+        valuesFuerST[2][2]=findViewById(R.id.r2TextView3);
+        valuesFuerST[2][3]=findViewById(R.id.r2TextView4);
+        valuesFuerST[2][4]=findViewById(R.id.r2TextView5);
+        valuesFuerST[2][5]=findViewById(R.id.r2TextView6);
+        valuesFuerST[2][6]=findViewById(R.id.r2TextView7);
+
+
+        valuesFuerST[3][0]=findViewById(R.id.r3TextView1);
+        valuesFuerST[3][1]=findViewById(R.id.r3TextView2);
+        valuesFuerST[3][2]=findViewById(R.id.r3TextView3);
+        valuesFuerST[3][3]=findViewById(R.id.r3TextView4);
+        valuesFuerST[3][4]=findViewById(R.id.r3TextView5);
+        valuesFuerST[3][5]=findViewById(R.id.r3TextView6);
+        valuesFuerST[3][6]=findViewById(R.id.r3TextView7);
+
+
+        valuesFuerST[4][0]=findViewById(R.id.r4TextView1);
+        valuesFuerST[4][1]=findViewById(R.id.r4TextView2);
+        valuesFuerST[4][2]=findViewById(R.id.r4TextView3);
+        valuesFuerST[4][3]=findViewById(R.id.r4TextView4);
+        valuesFuerST[4][4]=findViewById(R.id.r4TextView5);
+        valuesFuerST[4][5]=findViewById(R.id.r4TextView6);
+        valuesFuerST[4][6]=findViewById(R.id.r4TextView7);
+
+
+        valuesFuerST[5][0]=findViewById(R.id.r5TextView1);
+        valuesFuerST[5][1]=findViewById(R.id.r5TextView2);
+        valuesFuerST[5][2]=findViewById(R.id.r5TextView3);
+        valuesFuerST[5][3]=findViewById(R.id.r5TextView4);
+        valuesFuerST[5][4]=findViewById(R.id.r5TextView5);
+        valuesFuerST[5][5]=findViewById(R.id.r5TextView6);
+        valuesFuerST[5][6]=findViewById(R.id.r5TextView7);
+
+
+        valuesFuerST[6][0]=findViewById(R.id.r6TextView1);
+        valuesFuerST[6][1]=findViewById(R.id.r6TextView2);
+        valuesFuerST[6][2]=findViewById(R.id.r6TextView3);
+        valuesFuerST[6][3]=findViewById(R.id.r6TextView4);
+        valuesFuerST[6][4]=findViewById(R.id.r6TextView5);
+        valuesFuerST[6][5]=findViewById(R.id.r6TextView6);
+        valuesFuerST[6][6]=findViewById(R.id.r6TextView7);
+
+
+        valuesFuerST[7][0]=findViewById(R.id.r7TextView1);
+        valuesFuerST[7][1]=findViewById(R.id.r7TextView2);
+        valuesFuerST[7][2]=findViewById(R.id.r7TextView3);
+        valuesFuerST[7][3]=findViewById(R.id.r7TextView4);
+        valuesFuerST[7][4]=findViewById(R.id.r7TextView5);
+        valuesFuerST[7][5]=findViewById(R.id.r7TextView6);
+        valuesFuerST[7][6]=findViewById(R.id.r7TextView7);
+
+
+        valuesFuerST[8][0]=findViewById(R.id.r8TextView1);
+        valuesFuerST[8][1]=findViewById(R.id.r8TextView2);
+        valuesFuerST[8][2]=findViewById(R.id.r8TextView3);
+        valuesFuerST[8][3]=findViewById(R.id.r8TextView4);
+        valuesFuerST[8][4]=findViewById(R.id.r8TextView5);
+        valuesFuerST[8][5]=findViewById(R.id.r8TextView6);
+        valuesFuerST[8][6]=findViewById(R.id.r8TextView7);
+
+
+            for (int i = 0; i < 7; i++) {
+                rh.connectWS(i);
+            }
+            fillStundenplan(st.getStundenplanArrList());
     }
 
     @Override
@@ -137,12 +222,21 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         Toast.makeText(this, status,
                 Toast.LENGTH_SHORT).show();
     }
-    public void printTestDaten (String daten){
-
-        t1.setText(daten);
-    }
 
     public Stundenplan getStundenplan(){
         return st;
+    }
+
+    public void fillStundenplan(ArrayList<String[]> sammelArr){
+
+        for (int reihe = 0; reihe < 9; reihe++) {
+
+            for (int i = 0; i < 7; i++) {
+               valuesFuerST[reihe][i].setText(sammelArr.get(i)[reihe]);     // komplizierte umstrukturierung bei der abfrage aufgrund fehlerhafter deklaration der Variablen --> spalte vs reihe
+
+            }//         nach unten  nach rechts        nach rechts   nach unten
+
+        }
+
     }
 }
