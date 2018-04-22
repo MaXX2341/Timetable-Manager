@@ -36,6 +36,7 @@ public class Stundenplan {
         for (int i = 0; i < 9; i++) {
             sammelArr.get(spaltenNR)[i] = valueArr[i]; //--> syntax-Rate King!              //hier wird in einem Array aus arrays die Values abgespeichert, um sie dann einfacher hernehmen zu können, wenn sie in das Textfield geladen werden sollen
         }
+
     }
     public ArrayList<String[]> getStundenplanArrList(){
         return sammelArr;

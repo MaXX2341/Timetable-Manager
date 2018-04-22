@@ -18,10 +18,11 @@ import cz.msebera.android.httpclient.Header;
  */
 
 public class ResponseHandler {
+    boolean nEm = true;
+
     DashboardActivity dbA = null;
     public ResponseHandler(String fromWhere, Activity c){
         if (fromWhere == "DBA"){
-            //c.cast(dbA); //--> FIX PROBLEM DAMIT DES ALS DASHBOARDACTIVITY UNGSECHEN WERT
             dbA = ((DashboardActivity) c);
         }
     }
@@ -29,7 +30,7 @@ public class ResponseHandler {
     public void connectWS(final int chooser){
         final AsyncHttpClient client = new AsyncHttpClient();
 //http://kevinsorg.bplaced.net/MySQLadmin
-        String tabelle = "ollm no gleich";
+        String tabelle = "montag";
 
             switch (chooser) {
                 case 0:
@@ -53,7 +54,7 @@ public class ResponseHandler {
                 case 6:
                     tabelle = "freitag";
                     break;
-                default: dbA.setTestOutput("kaputt do mit chooser");
+                default: dbA.setTestOutput("chooser error");
             }
             //dbA.makeVarDump(tabelle);
 
@@ -62,7 +63,10 @@ public class ResponseHandler {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 String testVar = "3";
-                dbA.setTestOutput("Success");
+                if (nEm ==true){
+                    dbA.setTestOutput("Success");
+                }
+
 
                 if (response != null) {
                     testVar = "JSON received";
@@ -75,7 +79,11 @@ public class ResponseHandler {
                     testVar=("nothing in the JSON");
                 }
 
-                dbA.setTestOutput(testVar);
+                if (nEm ==true){
+                    dbA.setTestOutput(testVar);
+                }
+                nEm  =false;
+
             }
 
             @Override
@@ -101,30 +109,25 @@ public class ResponseHandler {
     public void getValueArrFromWebservice(JSONArray response,int SpaltenNR)  {
         JSONObject jO = null;
         String[]  valueArr = new String[9];
-        try {
+
 
             for (int i = 0; i < 9; i++) {
+                try {
                 jO = response.getJSONObject(i);
-                if(jO.has("name")) {
-                    valueArr[i] = jO.getString("name");
-                }
-                else{
+
+                valueArr[i] = jO.getString("name");    //values werden geholt über "response" und werden dem valueArr hinzugefügt(Zellen --> untereinander)
+
+                } catch (JSONException e) {
+             //       dbA.setTestOutput("leeres objekt bei index = "+i);
                     valueArr[i] = "";
                 }
-                        //values werden geholt über "response" und werden dem valueArr hinzugefügt(Zellen --> untereinander)
-
             }
 
             dbA.getStundenplan().fillArraysWithValue(valueArr,SpaltenNR); // --> Stundenplan der in der dbA erstellt wird, wird hergeholt und darüber wird der Stundenplan befüllt
-
-
+        dbA.fillStundenplan(dbA.getStundenplan().getStundenplanArrList());
           //  dbA.printTestDaten(jO.getString("name"));   //--> i bin pro, iatz werd rassiert!
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-            dbA.setTestOutput("i bims do");
 
-        }
 
     }
 

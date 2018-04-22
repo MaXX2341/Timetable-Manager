@@ -27,6 +27,8 @@ import cz.msebera.android.httpclient.Header;
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    boolean nEm = true;
+
     Stundenplan st = new Stundenplan();
     TextView[][] valuesFuerST = new TextView[9][7];
 
@@ -61,14 +63,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         navigationView.setNavigationItemSelectedListener(this);
         findViewById(R.id.AendernButton).setOnClickListener(new handleButton());
         findViewById(R.id.reloadButton).setOnClickListener(new handleButton());
-
-        valuesFuerST[0][0]=findViewById(R.id.r0TextView1);
-        valuesFuerST[0][1]=findViewById(R.id.r0TextView2);
-        valuesFuerST[0][2]=findViewById(R.id.r0TextView3);
-        valuesFuerST[0][3]=findViewById(R.id.r0TextView4);
-        valuesFuerST[0][4]=findViewById(R.id.r0TextView5);
-        valuesFuerST[0][5]=findViewById(R.id.r0TextView6);
-        valuesFuerST[0][6]=findViewById(R.id.r0TextView7);
 
         valuesFuerST[1][0]=findViewById(R.id.r1TextView1);
         valuesFuerST[1][1]=findViewById(R.id.r1TextView2);
@@ -141,11 +135,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         valuesFuerST[8][5]=findViewById(R.id.r8TextView6);
         valuesFuerST[8][6]=findViewById(R.id.r8TextView7);
 
-
+        if (nEm == true){
             for (int i = 0; i < 7; i++) {
                 rh.connectWS(i);
+
             }
-            fillStundenplan(st.getStundenplanArrList());
+            nEm  =false;
+        }
+        fillStundenplan(st.getStundenplanArrList());
     }
 
     @Override
@@ -212,6 +209,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 for (int i = 0; i < 7; i++) {
                     rh.connectWS(i);
                 }
+
             }
         }
 
@@ -229,10 +227,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     public void fillStundenplan(ArrayList<String[]> sammelArr){
 
-        for (int reihe = 0; reihe < 9; reihe++) {
+        for (int reihe = 1; reihe < 9; reihe++) {
 
             for (int i = 0; i < 7; i++) {
-               valuesFuerST[reihe][i].setText(sammelArr.get(i)[reihe]);     // komplizierte umstrukturierung bei der abfrage aufgrund fehlerhafter deklaration der Variablen --> spalte vs reihe
+               valuesFuerST[reihe][i].setText(sammelArr.get(i)[reihe-1]);     // komplizierte umstrukturierung bei der abfrage aufgrund fehlerhafter deklaration der Variablen --> spalte vs reihe
 
             }//         nach unten  nach rechts        nach rechts   nach unten
 
