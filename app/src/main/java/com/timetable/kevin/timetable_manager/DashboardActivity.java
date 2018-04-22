@@ -229,7 +229,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         for (int reihe = 1; reihe < 9; reihe++) {
 
-            for (int i = 0; i < 7; i++) {
+            for (int i = 1; i < 7; i++) {
                valuesFuerST[reihe][i].setText(sammelArr.get(i)[reihe-1]);     // komplizierte umstrukturierung bei der abfrage aufgrund fehlerhafter deklaration der Variablen --> spalte vs reihe
 
             }//         nach unten  nach rechts        nach rechts   nach unten

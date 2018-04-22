@@ -149,7 +149,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/textview_border"
-                    android:text="8:00 - 9:00"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -157,7 +156,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/textview_border"
-                    android:text="Geschichte"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -165,7 +163,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/textview_border"
-                    android:text="Geographie"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -173,7 +170,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/textview_border"
-                    android:text="Mathematik"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -181,7 +177,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/textview_border"
-                    android:text="Internet"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -189,7 +184,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/textview_border"
-                    android:text="Sport"
                     android:textColor="@color/colorBlack" />
 
             </TableRow>
@@ -204,6 +198,7 @@
                     android:layout_height="wrap_content"
 
                     android:background="@drawable/textview_border"
+                    android:text="2."
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -265,6 +260,7 @@
                     android:layout_height="wrap_content"
 
                     android:background="@drawable/textview_border"
+                    android:text="3."
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -327,6 +323,7 @@
                     android:layout_height="wrap_content"
 
                     android:background="@drawable/textview_border"
+                    android:text="4."
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -387,6 +384,7 @@
                     android:layout_height="wrap_content"
 
                     android:background="@drawable/textview_border"
+                    android:text="5."
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -449,6 +447,7 @@
                     android:layout_height="wrap_content"
 
                     android:background="@drawable/textview_border"
+                    android:text="6."
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -511,6 +510,7 @@
                     android:layout_height="wrap_content"
 
                     android:background="@drawable/textview_border"
+                    android:text="7."
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -573,6 +573,7 @@
                     android:layout_height="wrap_content"
 
                     android:background="@drawable/textview_border"
+                    android:text="8."
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -631,6 +632,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/textview_border"
+                    android:text="9."
                     android:textColor="@color/colorBlack" />
 
                 <TextView
