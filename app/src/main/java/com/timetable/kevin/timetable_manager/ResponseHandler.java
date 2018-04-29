@@ -69,7 +69,6 @@ public class ResponseHandler {
             //dbA.makeVarDump(tabelle);
 
         client.get("http://kevinsorg.bplaced.net/MySQLadmin/index.php?tb="+tabelle+"", new JsonHttpResponseHandler() { //TODO url muss customisable sein, um immer das richtige abrufen zu können
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 String testVar = "3";
