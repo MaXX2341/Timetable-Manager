@@ -21,10 +21,20 @@ public class ResponseHandler {
     boolean nEm = true;
 
     DashboardActivity dbA = null;
+    EditTTActivity eTT = null;
+
+    String fromWhere;
+
     public ResponseHandler(String fromWhere, Activity c){
         if (fromWhere == "DBA"){
             dbA = ((DashboardActivity) c);
+            this.fromWhere = fromWhere;
         }
+        else if (fromWhere == "ETT"){
+            eTT = ((EditTTActivity) c);
+            this.fromWhere = fromWhere;
+        }
+
     }
 
     public void connectWS(final int chooser){
@@ -64,7 +74,7 @@ public class ResponseHandler {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 String testVar = "3";
                 if (nEm ==true){
-                    dbA.setTestOutput("Success");
+                    //dbA.setTestOutput("Success");
                 }
 
 
@@ -80,7 +90,7 @@ public class ResponseHandler {
                 }
 
                 if (nEm ==true){
-                    dbA.setTestOutput(testVar);
+                  //  dbA.setTestOutput(testVar);
                 }
                 nEm  =false;
 
@@ -98,7 +108,7 @@ public class ResponseHandler {
             @Override
             public void onRetry(int retryNo) {
 
-                dbA.setTestOutput("Retrying...");
+           //     dbA.setTestOutput("Retrying...");
             }
 
         });
@@ -118,17 +128,25 @@ public class ResponseHandler {
                 valueArr[i] = jO.getString("name");    //values werden geholt über "response" und werden dem valueArr hinzugefügt(Zellen --> untereinander)
 
                 } catch (JSONException e) {
-             //       dbA.setTestOutput("leeres objekt bei index = "+i);
+           //        dbA.setTestOutput("leeres objekt bei index = "+i);
                     valueArr[i] = "";
                 }
             }
 
-            dbA.getStundenplan().fillArraysWithValue(valueArr,SpaltenNR); // --> Stundenplan der in der dbA erstellt wird, wird hergeholt und darüber wird der Stundenplan befüllt
-        dbA.fillStundenplan(dbA.getStundenplan().getStundenplanArrList());
-          //  dbA.printTestDaten(jO.getString("name"));   //--> i bin pro, iatz werd rassiert!
+            if (fromWhere == "DBA"){
+                dbA.getStundenplan().fillArraysWithValue(valueArr,SpaltenNR); // --> Stundenplan der in der dbA erstellt wird, wird hergeholt und darüber wird der Stundenplan befüllt
+                dbA.fillStundenplan(dbA.getStundenplan().getStundenplanArrList());
+                //  dbA.printTestDaten(jO.getString("name"));   //--> i bin pro, iatz werd rassiert!
+            }
+            else if(fromWhere == "ETT"){
+                eTT.getStundenplan().fillArraysWithValue(valueArr,SpaltenNR);
+                eTT.fillStundenplanEditor(eTT.getStundenplan().getStundenplanArrList());
+            }
+
 
 
 
     }
+
 
 }
