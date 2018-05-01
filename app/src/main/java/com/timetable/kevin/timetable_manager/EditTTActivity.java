@@ -122,7 +122,13 @@ public class EditTTActivity extends AppCompatActivity {
 
             for (int i = 1; i < 7; i++) {
                 for (int j = 0; j < 9; j++) {
-                    arrayList.get(i)[j] = valuesFuerST[j][i].toString(); //  todo passt???
+                    try {
+                        if (valuesFuerST[j][i].toString() != null){
+                            arrayList.get(i)[j] = valuesFuerST[j][i].toString(); //  todo passt???
+                        }
+                    }catch (Exception e){}
+
+
                 }
 
             }

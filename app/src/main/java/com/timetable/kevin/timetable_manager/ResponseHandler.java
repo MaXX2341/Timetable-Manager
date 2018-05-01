@@ -262,20 +262,25 @@ public class ResponseHandler {
             }
         };
 
-                ArrayList<String[]> arrayList = eTT.getChangedStundenplan();
+        if (chooser == 6){
+            chooser--;
+        }
 
-                json = arrayList.get(chooser);
+                json = eTT.getChangedStundenplan().get(chooser);
 
         for (int i = 0; i < 9; i++) {
-            se = new StringEntity(json[i]);
 
+            if (json[i] != "" && json != null) {
+                try{
+                    se = new StringEntity(json[i]);
 
-                    if (json[i] != "" && json != null) {
                     post.setEntity(se);
                     post.setHeader("Accept", "application/json");
                     post.setHeader("Content-type", "application/json");
                     //httpResponse = c.execute(post);
                     c.execute(post);
+                }catch(Exception e){}
+
                 }
     }
 
