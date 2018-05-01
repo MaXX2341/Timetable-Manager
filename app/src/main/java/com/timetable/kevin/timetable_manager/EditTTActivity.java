@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public class EditTTActivity extends AppCompatActivity {
     private ResponseHandler rh = new ResponseHandler("ETT", this);
     Stundenplan st = new Stundenplan();
     boolean nEm = true;
+    String[][] editTTChangedValues = new String[9][7];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +96,7 @@ public class EditTTActivity extends AppCompatActivity {
 
         if (nEm == true){
             for (int i = 0; i < 7; i++) {
-                rh.connectWS(i);
+                rh.connectWS(i,"ABFRAGE");
             }
             nEm = false;
         }
@@ -105,6 +107,22 @@ public class EditTTActivity extends AppCompatActivity {
         public void onClick(View v) {
             //an den webservice senden
 
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 7; j++) {
+                    try {
+                        if (valuesFuerST[i][j].getText().toString() != null) {
+                            editTTChangedValues[i][j] = valuesFuerST[i][j].getText().toString();
+                        }
+                    }catch (Exception e){}
+
+
+                }
+            }
+
+          //  setTestOutput(valuesFuerST[1][1].getText().toString());
+
+
+            rh.connectWS(0,"POST");
             Intent intent = new Intent(EditTTActivity.this, DashboardActivity.class);
             startActivity(intent);
         }
@@ -126,4 +144,11 @@ public class EditTTActivity extends AppCompatActivity {
         return st;
     }
 
+    private void setTestOutput (String status){
+        Toast.makeText(this, status,
+                Toast.LENGTH_SHORT).show();
+    }
+    public String[][] getEditTTChangedValues(){
+        return editTTChangedValues;
+    }
 }

@@ -11,7 +11,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HttpHost;
+import cz.msebera.android.httpclient.HttpRequest;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.client.ClientProtocolException;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.client.methods.HttpUriRequest;
+import cz.msebera.android.httpclient.conn.ClientConnectionManager;
+import cz.msebera.android.httpclient.entity.StringEntity;
+import cz.msebera.android.httpclient.params.HttpParams;
+import cz.msebera.android.httpclient.protocol.HttpContext;
 
 /**
  * Created by Felix Geier on 04.04.2018.
@@ -37,10 +51,10 @@ public class ResponseHandler {
 
     }
 
-    public void connectWS(final int chooser){
+    public void connectWS(final int chooser, String whatToDo){
         final AsyncHttpClient client = new AsyncHttpClient();
 //http://kevinsorg.bplaced.net/MySQLadmin
-        String tabelle = "montag";
+        String tabelle = "";
 
             switch (chooser) {
                 case 0:
@@ -64,9 +78,12 @@ public class ResponseHandler {
                 case 6:
                     tabelle = "freitag";
                     break;
-                default: dbA.setTestOutput("chooser error");
+                default:// dbA.setTestOutput("chooser error");
             }
             //dbA.makeVarDump(tabelle);
+
+        if (whatToDo == "ABFRAGE"){
+
 
         client.get("http://kevinsorg.bplaced.net/MySQLadmin/index.php?tb="+tabelle+"", new JsonHttpResponseHandler() { //TODO url muss customisable sein, um immer das richtige abrufen zu können
             @Override
@@ -76,16 +93,12 @@ public class ResponseHandler {
                     //dbA.setTestOutput("Success");
                 }
 
-
                 if (response != null) {
-                    testVar = "JSON received";
-
+                  //  testVar = "JSON received";
                     getValueArrFromWebservice(response,chooser); //if --> login muss auch hierher         //Daten werden vom Webserver geholt //todo wegen chooser vielleicht problem
-
-
                 }
                 else {
-                    testVar=("nothing in the JSON");
+                //    testVar=("nothing in the JSON");
                 }
 
                 if (nEm ==true){
@@ -111,6 +124,17 @@ public class ResponseHandler {
             }
 
         });
+    }
+    else if (whatToDo == "POST"){
+            try {
+                postValuesToWebservice();
+            } catch (IOException e) {
+                dbA.setTestOutput("Post fehlgeschlagen");
+            }
+        }
+
+
+
 
 
         //client.dispose() ??
@@ -118,7 +142,6 @@ public class ResponseHandler {
     public void getValueArrFromWebservice(JSONArray response,int SpaltenNR)  {
         JSONObject jO = null;
         String[]  valueArr = new String[9];
-
 
             for (int i = 0; i < 9; i++) {
                 try {
@@ -147,5 +170,82 @@ public class ResponseHandler {
 
     }
 
+    private void postValuesToWebservice() throws IOException {
+        HttpPost post = new HttpPost("http://kevinsorg.bplaced.net/MySQLadmin/index.php?tb=POST");
+        HttpResponse httpResponse = null;
 
+        String[][] valuesArr = eTT.getEditTTChangedValues();
+
+        String json = null;
+        StringEntity se = null;
+
+        HttpClient c = new HttpClient() {
+            @Override
+            public HttpParams getParams() {
+                return null;
+            }
+
+            @Override
+            public ClientConnectionManager getConnectionManager() {
+                return null;
+            }
+
+            @Override
+            public HttpResponse execute(HttpUriRequest request) throws IOException, ClientProtocolException {
+                return null;
+            }
+
+            @Override
+            public HttpResponse execute(HttpUriRequest request, HttpContext context) throws IOException, ClientProtocolException {
+                return null;
+            }
+
+            @Override
+            public HttpResponse execute(HttpHost target, HttpRequest request) throws IOException, ClientProtocolException {
+                return null;
+            }
+
+            @Override
+            public HttpResponse execute(HttpHost target, HttpRequest request, HttpContext context) throws IOException, ClientProtocolException {
+                return null;
+            }
+
+            @Override
+            public <T> T execute(HttpUriRequest request, cz.msebera.android.httpclient.client.ResponseHandler<? extends T> responseHandler) throws IOException, ClientProtocolException {
+                return null;
+            }
+
+            @Override
+            public <T> T execute(HttpUriRequest request, cz.msebera.android.httpclient.client.ResponseHandler<? extends T> responseHandler, HttpContext context) throws IOException, ClientProtocolException {
+                return null;
+            }
+
+            @Override
+            public <T> T execute(HttpHost target, HttpRequest request, cz.msebera.android.httpclient.client.ResponseHandler<? extends T> responseHandler) throws IOException, ClientProtocolException {
+                return null;
+            }
+
+            @Override
+            public <T> T execute(HttpHost target, HttpRequest request, cz.msebera.android.httpclient.client.ResponseHandler<? extends T> responseHandler, HttpContext context) throws IOException, ClientProtocolException {
+                return null;
+            }
+        };
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 7; j++) {
+                json = valuesArr[i][j];
+                if (json != "" && json != null) {
+
+                        se = new StringEntity(json);
+
+                    post.setEntity(se);
+                    post.setHeader("Accept", "application/json");
+                    post.setHeader("Content-type", "application/json");
+                    httpResponse = c.execute(post);
+                }
+            }
+        }
+
+
+    }
 }

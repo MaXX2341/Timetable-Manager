@@ -137,7 +137,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         if (nEm == true){
             for (int i = 0; i < 7; i++) {
-                rh.connectWS(i);
+                rh.connectWS(i,"ABFRAGE");
 
             }
             nEm  =false;
@@ -207,7 +207,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             }
             else if (id == R.id.reloadButton){
                 for (int i = 0; i < 7; i++) {
-                    rh.connectWS(i);
+                    rh.connectWS(i,"ABFRAGE");
                 }
 
             }
