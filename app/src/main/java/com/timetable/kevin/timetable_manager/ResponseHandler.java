@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.HttpHost;
@@ -127,7 +128,10 @@ public class ResponseHandler {
     }
     else if (whatToDo == "POST"){
             try {
-                postValuesToWebservice();
+                for (int i = 0; i < 7; i++) {
+                    postValuesToWebservice(i);
+                }
+
             } catch (IOException e) {
                 dbA.setTestOutput("Post fehlgeschlagen");
             }
@@ -170,13 +174,40 @@ public class ResponseHandler {
 
     }
 
-    private void postValuesToWebservice() throws IOException {
-        HttpPost post = new HttpPost("http://kevinsorg.bplaced.net/MySQLadmin/index.php?tb=POST");
+    private void postValuesToWebservice(int chooser) throws IOException {
+        String spalte;
+        switch (chooser) {
+            case 0:
+                spalte = "stunde";
+                break;
+            case 1:
+                spalte = "zeit";
+                break;
+            case 2:
+                spalte = "montag";
+                break;
+            case 3:
+                spalte = "dienstag";
+                break;
+            case 4:
+                spalte = "mittwoch";
+                break;
+            case 5:
+                spalte = "donnerstag";
+                break;
+            case 6:
+                spalte = "freitag";
+                break;
+            default: spalte = "";
+        }
+
+
+
+        HttpPost post = new HttpPost("http://kevinsorg.bplaced.net/MySQLadmin/index.php?wtd=POST?sp="+spalte);
         HttpResponse httpResponse = null;
 
-        String[][] valuesArr = eTT.getEditTTChangedValues();
 
-        String json = null;
+        String[] json = null;
         StringEntity se = null;
 
         HttpClient c = new HttpClient() {
@@ -231,20 +262,23 @@ public class ResponseHandler {
             }
         };
 
+                ArrayList<String[]> arrayList = eTT.getChangedStundenplan();
+
+                json = arrayList.get(chooser);
+
         for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 7; j++) {
-                json = valuesArr[i][j];
-                if (json != "" && json != null) {
+            se = new StringEntity(json[i]);
 
-                        se = new StringEntity(json);
 
+                    if (json[i] != "" && json != null) {
                     post.setEntity(se);
                     post.setHeader("Accept", "application/json");
                     post.setHeader("Content-type", "application/json");
-                    httpResponse = c.execute(post);
+                    //httpResponse = c.execute(post);
+                    c.execute(post);
                 }
-            }
-        }
+    }
+
 
 
     }

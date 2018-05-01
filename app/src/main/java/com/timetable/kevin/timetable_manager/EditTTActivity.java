@@ -15,7 +15,13 @@ public class EditTTActivity extends AppCompatActivity {
     private ResponseHandler rh = new ResponseHandler("ETT", this);
     Stundenplan st = new Stundenplan();
     boolean nEm = true;
-    String[][] editTTChangedValues = new String[9][7];
+    String[] changedSpalteZeit = new String[9];
+    String[] changedSpalteMontag = new String[9];
+    String[] changedSpalteDienstag = new String[9];
+    String[] changedSpalteMittwoch = new String[9];
+    String[] changedSpalteDonnerstag = new String[9];
+    String[] changedSpalteFreitag = new String[9];
+    ArrayList<String[]> arrayList = new ArrayList<String[]>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +100,13 @@ public class EditTTActivity extends AppCompatActivity {
         valuesFuerST[8][5]=findViewById(R.id.r8EditView6);
         valuesFuerST[8][6]=findViewById(R.id.r8EditView7);
 
+        arrayList.add(changedSpalteZeit);
+        arrayList.add(changedSpalteMontag);
+        arrayList.add(changedSpalteDienstag);
+        arrayList.add(changedSpalteMittwoch);
+        arrayList.add(changedSpalteDonnerstag);
+        arrayList.add(changedSpalteFreitag);
+
         if (nEm == true){
             for (int i = 0; i < 7; i++) {
                 rh.connectWS(i,"ABFRAGE");
@@ -107,16 +120,11 @@ public class EditTTActivity extends AppCompatActivity {
         public void onClick(View v) {
             //an den webservice senden
 
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 7; j++) {
-                    try {
-                        if (valuesFuerST[i][j].getText().toString() != null) {
-                            editTTChangedValues[i][j] = valuesFuerST[i][j].getText().toString();
-                        }
-                    }catch (Exception e){}
-
-
+            for (int i = 1; i < 7; i++) {
+                for (int j = 0; j < 9; j++) {
+                    arrayList.get(i)[j] = valuesFuerST[j][i].toString(); //  todo passt???
                 }
+
             }
 
           //  setTestOutput(valuesFuerST[1][1].getText().toString());
@@ -148,7 +156,7 @@ public class EditTTActivity extends AppCompatActivity {
         Toast.makeText(this, status,
                 Toast.LENGTH_SHORT).show();
     }
-    public String[][] getEditTTChangedValues(){
-        return editTTChangedValues;
+    public ArrayList<String[]> getChangedStundenplan(){
+        return arrayList;
     }
 }
